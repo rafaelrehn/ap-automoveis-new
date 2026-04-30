@@ -55,7 +55,7 @@ export default function Home() {
           <div className="absolute -bottom-40 -left-40 h-[500px] w-[500px] rounded-full bg-highlight/10 blur-3xl" />
         </div>
 
-        <div className="container relative mx-auto flex min-h-[calc(100svh-4rem)] max-w-full min-w-0 flex-col justify-center overflow-x-hidden px-4 pt-8 pb-8 lg:min-h-0 lg:px-8 lg:pt-0 lg:pb-0">
+        <div className="container relative mx-auto flex min-h-[calc(100svh-4rem)] min-w-0 flex-col justify-center overflow-x-hidden px-4 pt-8 pb-8 lg:min-h-0 lg:px-8 lg:pt-0 lg:pb-0">
           <div className="grid items-center gap-10 lg:grid-cols-2 lg:pt-28 lg:pb-0">
             <div className="max-w-xl min-w-0">
               <span className="inline-flex max-w-full flex-wrap items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-medium tracking-wide backdrop-blur">

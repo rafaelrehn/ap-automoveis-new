@@ -42,7 +42,7 @@ export function Header() {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex h-16 items-center justify-between lg:h-20">
           <Link href="/" className="group flex items-center gap-2">
-            <div className="relative h-11 w-11 overflow-hidden rounded-xl border border-white/10 bg-transparent shadow-elegant">
+            <div className="relative h-11 w-11 overflow-hidden">
               <Image
                 src="/images/logo.png"
                 alt="AP Automóveis"

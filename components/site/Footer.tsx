@@ -17,7 +17,7 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <Link href="/" className="flex items-center gap-2">
-              <div className="relative h-11 w-11 overflow-hidden rounded-xl border border-white/10 bg-transparent shadow-elegant">
+              <div className="relative h-11 w-11 overflow-hidden">
                 <Image
                   src="/images/logo.png"
                   alt="AP Automóveis"
