@@ -1,13 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
-import {
-  Car,
-  Heart,
-  Mail,
-  MapPin,
-  MessageCircle,
-  Phone,
-  Share2,
-} from "lucide-react";
+import { Heart, Mail, MapPin, MessageCircle, Phone, Share2 } from "lucide-react";
 
 import {
   ADDRESS,
@@ -24,8 +17,14 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-highlight text-highlight-foreground">
-                <Car className="h-5 w-5" />
+              <div className="relative h-11 w-11 overflow-hidden rounded-xl border border-white/10 bg-transparent shadow-elegant">
+                <Image
+                  src="/images/logo.png"
+                  alt="AP Automóveis"
+                  fill
+                  sizes="44px"
+                  className="object-cover"
+                />
               </div>
               <div>
                 <div className="font-display text-lg font-bold">AP Automóveis</div>

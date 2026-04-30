@@ -49,16 +49,16 @@ export default function Home() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-gradient-hero text-brand-foreground">
+      <section className="relative min-h-svh overflow-hidden bg-gradient-hero text-brand-foreground lg:min-h-0">
         <div className="absolute inset-0 opacity-40">
           <div className="absolute -top-40 -right-40 h-[500px] w-[500px] rounded-full bg-highlight/30 blur-3xl" />
           <div className="absolute -bottom-40 -left-40 h-[500px] w-[500px] rounded-full bg-highlight/10 blur-3xl" />
         </div>
 
-        <div className="container relative mx-auto px-4 lg:px-8">
-          <div className="grid items-center gap-10 pt-16 lg:grid-cols-2 lg:pt-28">
-            <div className="max-w-xl">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-medium tracking-wide backdrop-blur">
+        <div className="container relative mx-auto flex min-h-[calc(100svh-4rem)] max-w-full min-w-0 flex-col justify-center overflow-x-hidden px-4 pt-8 pb-8 lg:min-h-0 lg:px-8 lg:pt-0 lg:pb-0">
+          <div className="grid items-center gap-10 lg:grid-cols-2 lg:pt-28 lg:pb-0">
+            <div className="max-w-xl min-w-0">
+              <span className="inline-flex max-w-full flex-wrap items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-medium tracking-wide backdrop-blur">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-highlight" />
                 Estoque atualizado · Santa Rosa/RS
               </span>
@@ -88,7 +88,7 @@ export default function Home() {
                   asChild
                   size="lg"
                   variant="outline"
-                  className="h-12 border-white/20 bg-white/5 px-7 text-brand-foreground hover:bg-white/10 hover:text-brand-foreground"
+                  className="hidden h-12 border-white/20 bg-white/5 px-7 text-brand-foreground hover:bg-white/10 hover:text-brand-foreground sm:inline-flex"
                 >
                   <a href={whatsappLink()} target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="h-4 w-4" /> Falar com a loja
@@ -96,7 +96,7 @@ export default function Home() {
                 </Button>
               </div>
 
-              <div className="mt-10 grid max-w-md grid-cols-3 gap-4">
+              <div className="mt-10 hidden max-w-md grid-cols-3 gap-4 sm:grid">
                 {[
                   { n: "+500", l: "Carros vendidos" },
                   { n: "98%", l: "Clientes satisfeitos" },
@@ -109,6 +109,10 @@ export default function Home() {
                     <div className="mt-1 text-xs opacity-70">{stat.l}</div>
                   </div>
                 ))}
+              </div>
+
+              <div className="mt-8 lg:hidden">
+                <SearchBar />
               </div>
             </div>
 
@@ -127,7 +131,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="pt-12 pb-16 lg:pt-16 lg:pb-20">
+          <div className="hidden lg:block lg:pt-16 lg:pb-20">
             <SearchBar />
           </div>
         </div>
@@ -140,7 +144,7 @@ export default function Home() {
               Destaques da loja
             </span>
             <h2 className="mt-2 font-display text-3xl font-bold lg:text-4xl">
-              Veículos que estão saindo da loja
+              Veículos em destaque
             </h2>
             <p className="mt-3 max-w-xl text-muted-foreground">
               Seleção semanal dos melhores seminovos e usados disponíveis em
@@ -154,7 +158,7 @@ export default function Home() {
           </Button>
         </div>
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6">
           {featured.map((vehicle) => (
             <VehicleCard key={vehicle.id} v={vehicle} />
           ))}

@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Car, Menu, MessageCircle, X } from "lucide-react";
+import { Menu, MessageCircle, X } from "lucide-react";
 
 import { whatsappLink } from "@/data/vehicles";
 import { cn } from "@/lib/utils";
@@ -21,7 +22,6 @@ export function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const elevated = scrolled || open;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -35,24 +35,25 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 right-0 left-0 z-50 transition-smooth",
-        elevated
-          ? "site-header-glass border-b border-border shadow-sm"
-          : "bg-transparent",
+        "fixed top-0 right-0 left-0 z-50 border-b border-white/10 bg-brand text-highlight shadow-sm transition-smooth",
+        scrolled && "shadow-elegant",
       )}
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex h-16 items-center justify-between lg:h-20">
           <Link href="/" className="group flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-brand text-brand-foreground shadow-elegant">
-              <Car className="h-5 w-5" />
+            <div className="relative h-11 w-11 overflow-hidden rounded-xl border border-white/10 bg-transparent shadow-elegant">
+              <Image
+                src="/images/logo.png"
+                alt="AP Automóveis"
+                fill
+                sizes="44px"
+                className="object-cover"
+              />
             </div>
             <div className="leading-tight">
-              <div className="font-display text-lg font-bold tracking-tight">
+              <div className="font-display text-lg font-bold tracking-tight text-highlight">
                 AP Automóveis
-              </div>
-              <div className="text-[10px] uppercase tracking-widest text-muted-foreground">
-                Santa Rosa · RS
               </div>
             </div>
           </Link>
@@ -68,8 +69,8 @@ export function Header() {
                   className={cn(
                     "rounded-md px-4 py-2 text-sm font-medium transition-smooth",
                     active
-                      ? "bg-secondary text-foreground"
-                      : "text-muted-foreground hover:bg-secondary/60 hover:text-foreground",
+                      ? "bg-white/12 text-white"
+                      : "text-white/80 hover:bg-white/8 hover:text-white",
                   )}
                 >
                   {item.label}
@@ -79,7 +80,12 @@ export function Header() {
           </nav>
 
           <div className="hidden items-center gap-2 lg:flex">
-            <Button asChild variant="outline" size="sm">
+            <Button
+              asChild
+              variant="outline"
+              size="sm"
+              className="border-white/15 bg-white/5 text-highlight hover:bg-white/10 hover:text-highlight"
+            >
               <Link href="/estoque">Ver estoque</Link>
             </Button>
             <Button
@@ -96,7 +102,7 @@ export function Header() {
 
           <button
             type="button"
-            className="-mr-2 p-2 text-foreground lg:hidden"
+            className="-mr-2 p-2 text-highlight lg:hidden"
             onClick={() => setOpen((current) => !current)}
             aria-label="Menu"
             aria-expanded={open}
@@ -106,7 +112,7 @@ export function Header() {
         </div>
 
         {open && (
-          <div className="border-t border-border pb-4 pt-2 lg:hidden">
+          <div className="border-t border-white/10 pb-4 pt-2 lg:hidden">
             <nav className="flex flex-col gap-1">
               {nav.map((item) => (
                 <Link
@@ -116,8 +122,8 @@ export function Header() {
                   className={cn(
                     "rounded-md px-3 py-3 text-base font-medium",
                     pathname === item.href
-                      ? "bg-secondary text-foreground"
-                      : "text-muted-foreground",
+                      ? "bg-white/12 text-white"
+                      : "text-white/80",
                   )}
                 >
                   {item.label}
@@ -126,7 +132,11 @@ export function Header() {
             </nav>
 
             <div className="mt-3 flex flex-col gap-2">
-              <Button asChild variant="outline">
+              <Button
+                asChild
+                variant="outline"
+                className="border-white/15 bg-white/5 text-highlight hover:bg-white/10 hover:text-highlight"
+              >
                 <Link href="/estoque" onClick={() => setOpen(false)}>
                   Ver estoque
                 </Link>
