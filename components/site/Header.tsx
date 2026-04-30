@@ -21,6 +21,7 @@ export function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const elevated = scrolled || open;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -35,9 +36,9 @@ export function Header() {
     <header
       className={cn(
         "fixed top-0 right-0 left-0 z-50 transition-smooth",
-        scrolled
-          ? "border-b border-border bg-background/85 shadow-sm backdrop-blur-lg"
-          : "bg-background/0",
+        elevated
+          ? "site-header-glass border-b border-border shadow-sm"
+          : "bg-transparent",
       )}
     >
       <div className="container mx-auto px-4 lg:px-8">

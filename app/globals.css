@@ -169,4 +169,16 @@
   .transition-smooth {
     transition: var(--transition-smooth);
   }
+
+  .site-header-glass {
+    background-color: rgb(249 250 251 / 0.85);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+  }
+
+  @supports (color: color-mix(in srgb, white, transparent)) {
+    .site-header-glass {
+      background-color: color-mix(in srgb, var(--color-background) 85%, transparent);
+    }
+  }
 }
